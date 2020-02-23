@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+</head>
+
+<body>
+    <form action='/api/auth' method="POST">
+        <input type="email" placeholder="Enter Email" name="usermail" required />
+        <input type="password" placeholder="Enter Password" name="password" required />
+        <input type="submit" value="Login" />
+        <input type="button" onclick="register()" value="Register new User" />
+    </form>
+</body>
+
+
+<script>
+    function register() {
+        location.href = "registration.html";
+
+    }
+</script>
+
+</html>
