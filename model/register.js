@@ -1,3 +1,4 @@
+const config = require('config')
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const Joi = require('joi');
@@ -25,6 +26,7 @@ const registrationSchema = new mongoose.Schema({
 });
 
 registrationSchema.methods.generateAuthToken = function () {
+    //const token = jwt.sign({ email: this.email }, config.get('jwtPrivateKey'));
     const token = jwt.sign({ email: this.email }, 'jwtuserkey');
     return token;
 }
