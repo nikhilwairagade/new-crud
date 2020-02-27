@@ -1,3 +1,5 @@
 {
-    "jwtPrivateKey": "college_jwtPrivateKey"
+    "jwtPrivateKey": {
+        "password" :"college_jwtPrivateKey"
+    }
 }

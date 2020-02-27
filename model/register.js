@@ -1,4 +1,5 @@
-const config = require('config')
+/* eslint-disable indent */
+const config = require('config');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const Joi = require('joi');
@@ -29,15 +30,15 @@ registrationSchema.methods.generateAuthToken = function () {
     //const token = jwt.sign({ email: this.email }, config.get('jwtPrivateKey'));
     const token = jwt.sign({ email: this.email }, 'jwtuserkey');
     return token;
-}
+};
 
 
 
 
 function validateRegister(register) {
     const schema = {
-        fullname: Joi.string().min(5).max(50).required(),
-        usermail: Joi.string().min(5).max(255).required().email(),
+        name: Joi.string().min(5).max(50).required(),
+        email: Joi.string().min(5).max(255).required().email(),
         password: Joi.string().min(5).max(255).required()
     };
 
@@ -45,7 +46,7 @@ function validateRegister(register) {
 }
 
 
-const Register = mongoose.model('Register_user ', registrationSchema)
+const Register = mongoose.model('Register_user ', registrationSchema);
 
 exports.registrationSchema = registrationSchema;
 exports.Register = Register;
