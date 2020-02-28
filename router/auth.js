@@ -1,12 +1,9 @@
-
 const Joi = require('joi');
 const { Register } = require('../model/register');
-//const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const router = express.Router();
 const bcrypt = require('bcrypt');
-//const path = require('path');
 app.use(express.static('./htmlPage'));
 
 router.post('/', async (req, res) => {
@@ -17,7 +14,7 @@ router.post('/', async (req, res) => {
 	if (!user) return res.status(404).send('Invalid Email or password.');
 
 	const validpassword = await bcrypt.compare(req.body.password, user.password);
-	if (!validpassword) return res.status(405).send('Invalid email or password');
+	if (!validpassword) return res.status(404).send('Invalid email or password');
 
 	const token = user.generateAuthToken();
 	res.status(200).header('x-auth', token).send(token);

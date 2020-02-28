@@ -3,7 +3,6 @@ const BaseJoi = require('joi');
 const Extension = require('joi-date-extensions');
 const Joi = BaseJoi.extend(Extension);
 
-
 const studentSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -15,7 +14,6 @@ const studentSchema = new mongoose.Schema({
 		type: Number,
 		require: true
 	},
-
 	dob: {
 		type: Date,
 		require: true
@@ -35,10 +33,8 @@ const studentSchema = new mongoose.Schema({
 		required: true,
 		minlength: 5,
 		maxlength: 255,
-
 	}
 });
-
 
 function validateStudent(register) {
 	const schema = {
@@ -48,13 +44,9 @@ function validateStudent(register) {
 		college: Joi.string().required(),
 		semail: Joi.string().min(5).max(255).required().email(),
 	};
-
 	return Joi.validate(register, schema);
 }
-
-
 const Student = mongoose.model('student ', studentSchema);
-
 exports.studentSchema = studentSchema;
 exports.Student = Student;
 exports.validateStudent = validateStudent;

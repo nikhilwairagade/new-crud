@@ -32,22 +32,15 @@ registrationSchema.methods.generateAuthToken = function () {
     return token;
 };
 
-
-
-
 function validateRegister(register) {
     const schema = {
         name: Joi.string().min(5).max(50).required(),
         email: Joi.string().min(5).max(255).required().email(),
         password: Joi.string().min(5).max(255).required()
     };
-
     return Joi.validate(register, schema);
 }
-
-
 const Register = mongoose.model('Register_user ', registrationSchema);
-
 exports.registrationSchema = registrationSchema;
 exports.Register = Register;
 exports.validate = validateRegister;
